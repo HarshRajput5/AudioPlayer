@@ -17,10 +17,8 @@ class MusicController extends GetxController {
   void onInit() async {
     super.onInit();
     player = AudioPlayer();
-    // await player.setAsset('assets/music_1.mp3');
     await player.setAudioSource(playlist,
         initialIndex: 0, initialPosition: Duration.zero);
-        // player.
   }
 
   Future<void> toggelplay() async {
@@ -38,11 +36,7 @@ class MusicController extends GetxController {
   Slider customSlider() {
     return Slider(
         value: player.currentIndex!.toDouble(),
-        // value: audioDuration.value.toDouble(),
         onChanged: (value) {
-          // setState(() {
-          // player.currentIndex = value.toInt();
-          // _currentSliderValue = value; // Update the slider position
         });
   }
 
@@ -61,10 +55,6 @@ class MusicController extends GetxController {
           activeTrackBar:
               BoxDecoration(color: Color.fromRGBO(151, 101, 202, 1))),
       onDragging: (handlerIndex, lowerValue, upperValue) {
-        // guest.value = lowerValue.toInt();
-        // updatedPrice();
-        // int discount = totalAmount() - discountedTotalPrice();
-        // percentage.value = ((discount / totalAmount()) * 100).toInt();
       },
     );
   }

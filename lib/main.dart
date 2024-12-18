@@ -38,7 +38,6 @@ class MusicScreen extends StatelessWidget {
         ),
         child: Column(
           mainAxisSize: MainAxisSize.max,
-          // mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(
@@ -64,12 +63,6 @@ class MusicScreen extends StatelessWidget {
                       icon: Icon(Icons.arrow_back_ios,size: 33,)),
                   IconButton(
                       onPressed: () {
-                        // if(controller.isPlay.value){
-                        //   controller.player.pause();
-                        // }
-                        // else{
-                        //   controller.player.play();
-                        // }
                         controller.toggelplay();
                         controller.countPlay.value++;
                         print("Play count ${controller.countPlay.value}");
@@ -87,13 +80,6 @@ class MusicScreen extends StatelessWidget {
                 ],
               ),
             ),
-
-            // Obx(
-            //   ()=> ElevatedButton(
-            //     onPressed: ()=>controller.toggelplay(),
-            //     child: Text(controller.isPlay.value ? 'Pause' : 'Play'),
-            //   ),
-            // ),
           ],
         ),
       ),
