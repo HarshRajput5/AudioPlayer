@@ -11,13 +11,16 @@ class MusicController extends GetxController {
   final countPrevius = 1.obs;
   final countPlay = 1.obs;
   final countNext = 1.obs;
-  
+  final audioDuration = 0.obs;
+
   @override
   void onInit() async {
     super.onInit();
     player = AudioPlayer();
     // await player.setAsset('assets/music_1.mp3');
-    await player.setAudioSource(playlist, initialIndex: 0, initialPosition: Duration.zero);
+    await player.setAudioSource(playlist,
+        initialIndex: 0, initialPosition: Duration.zero);
+        // player.
   }
 
   Future<void> toggelplay() async {
@@ -30,7 +33,17 @@ class MusicController extends GetxController {
       await player.play();
       print('Play');
     }
-    
+  }
+
+  Slider customSlider() {
+    return Slider(
+        value: player.currentIndex!.toDouble(),
+        // value: audioDuration.value.toDouble(),
+        onChanged: (value) {
+          // setState(() {
+          // player.currentIndex = value.toInt();
+          // _currentSliderValue = value; // Update the slider position
+        });
   }
 
   // ignore: non_constant_identifier_names
@@ -48,27 +61,25 @@ class MusicController extends GetxController {
           activeTrackBar:
               BoxDecoration(color: Color.fromRGBO(151, 101, 202, 1))),
       onDragging: (handlerIndex, lowerValue, upperValue) {
-        
         // guest.value = lowerValue.toInt();
         // updatedPrice();
         // int discount = totalAmount() - discountedTotalPrice();
         // percentage.value = ((discount / totalAmount()) * 100).toInt();
-        
       },
     );
   }
 
   final playlist = ConcatenatingAudioSource(
-  // Start loading next item just before reaching it
-  useLazyPreparation: true,
-  // Customise the shuffle algorithm
-  shuffleOrder: DefaultShuffleOrder(),
-  // Specify the playlist items
-  children: [
-    AudioSource.asset('assets/a1.mp3'),
-    AudioSource.asset('assets/a2.mp3')
-  ],
-);
+    // Start loading next item just before reaching it
+    useLazyPreparation: true,
+    // Customise the shuffle algorithm
+    shuffleOrder: DefaultShuffleOrder(),
+    // Specify the playlist items
+    children: [
+      AudioSource.asset('assets/a1.mp3'),
+      AudioSource.asset('assets/a2.mp3')
+    ],
+  );
 
   @override
   void dispose() {

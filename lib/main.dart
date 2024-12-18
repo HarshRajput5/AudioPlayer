@@ -40,9 +40,12 @@ class MusicScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Obx(() => GestureDetector()),
+              Icon(Icons.my_library_music_sharp,size: 200,),
+              // controller.customSlider(),
+              // Obx(() => controller.GuestSelectionSlider()),
               Obx(
                 () => Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
                         onPressed: () {
@@ -54,13 +57,19 @@ class MusicScreen extends StatelessWidget {
                         icon: Icon(Icons.arrow_back_ios)),
                     IconButton(
                         onPressed: () {
-                          controller.player.play();
+                          // if(controller.isPlay.value){
+                          //   controller.player.pause();
+                          // }
+                          // else{
+                          //   controller.player.play();
+                          // }
+                          controller.toggelplay();
                           controller.countPlay.value++;
                           print("Play count ${controller.countPlay.value}");
                         },
                         icon: Icon(controller.isPlay.value
-                            ? Icons.play_arrow
-                            : Icons.pause)),
+                            ? Icons.pause
+                            : Icons.play_arrow)),
                     IconButton(
                         onPressed: () {
                           controller.player.seekToNext();
